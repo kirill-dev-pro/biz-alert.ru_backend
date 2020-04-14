@@ -10,6 +10,7 @@ app.get('/getPoints', async (req, res) => {
   if (req.method !== 'GET') return res.status(500).send('Wrong method')
   try {
     const points = await Point.find({})
+    res.header('Access-Control-Allow-Origin', '*')
     res.json(points)
   } catch (err) {
     console.error(err)
@@ -22,6 +23,7 @@ app.post('/setPoint', async (req, res) => {
   const point = new Point(req.body)
   try {
     await point.save()
+    res.header('Access-Control-Allow-Origin', '*')
     res.status(200).json(point.toJSON())
   } catch (err) {
     console.error(err)
