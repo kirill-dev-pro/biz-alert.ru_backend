@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+const { Schema } = require('mongoose')
 
 const PointSchema = new Schema({
   address: String,
